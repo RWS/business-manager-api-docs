@@ -1,29 +1,29 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>How to create a project using API </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="How to create a project using API ">
-    <meta name="generator" content="docfx 2.58.9.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>How to create a project using API </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="How to create a project using API ">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
     
     <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
-      <header>
-        
+      <header>        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,44 +33,43 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
-              <a class="navbar-brand" href="../index.html">
+
+              <a class="navbar-brand" href="https://developers.rws.com/">
                 <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
               <form class="navbar-form navbar-right" role="search" id="search">
                 <div class="form-group">
-                  <span class="glyphicon glyphicon-search search-icon"></span>
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
             </div>
           </div>
         </nav>
-        
-        <div class="subnav navbar-default">
-          <div class="container hide-when-search">
-            <div class="breadcrumb-container" id="breadcrumb">
-              <ul class="breadcrumb col-md-10">
-                <li></li>
-              </ul>
-            </div>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
         </div>
       </header>
-      <div class="container body-content">
-        
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+
+        <div class="container body-content">
+
+          <div id="search-results">
+            <div class="search-list">Search Results for <span></span></div>
+            <div class="sr-items">
+              <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+            </div>
+            <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
-      </div>
+
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -82,11 +81,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="how-to-create-a-project-using-api">How to create a project using API</h1>
 
-<p>In previous article, we retrieved data from TBM database. Now, let&#39;s demonstrate how create data. The approach here is the same as for retrieving data, but instead of GET method we will use POST method.
+<p>In previous article, we retrieved data from TBM database. Now, let's demonstrate how create data. The approach here is the same as for retrieving data, but instead of GET method we will use POST method.
 First of all, expand <strong>Translation project</strong> group and find an endpoint to create a project:</p>
-<p>For example, you&#39;re going to read simple list of Units. Let&#39;s expand <strong>Unit</strong> group and find endpoint which allows to read list of units:</p>
+<p>For example, you're going to read simple list of Units. Let's expand <strong>Unit</strong> group and find endpoint which allows to read list of units:</p>
 <p><img src="../images/project_model.png" alt="API docs"></p>
-<p>In the same manner as for units, let&#39;s create a model class for translation project:</p>
+<p>In the same manner as for units, let's create a model class for translation project:</p>
 <pre><code class="lang-cs">public class TranslationProjectDtoEdit : BaseDtoEdit
  {
      public int? DocNum {get; set; }
@@ -118,33 +117,36 @@ First of all, expand <strong>Translation project</strong> group and find an endp
      public List&lt;Guid&gt; TargetLanguages { get; set; }
      public List&lt;DocumentChecklistItemDtoEdit&gt; ChecklistItems { get; set; }
  }
-</code></pre><p>Now we can use this class to create a project:</p>
-<pre><code class="lang-cs"> var client = new RestClient(&quot;https://localhost:44334/DocTranslationProject&quot;);
- var request = new RestRequest(Method.POST);
- request.AddHeader(&quot;Authorization&quot;, &quot;Bearer your_token&quot;);
+</code></pre>
+<p>Now we can use this class to create a project:</p>
+<pre><code class="lang-cs">	var client = new RestClient(&quot;https://localhost:44334/DocTranslationProject&quot;);
+	var request = new RestRequest(Method.POST);
+	request.AddHeader(&quot;Authorization&quot;, &quot;Bearer your_token&quot;);
 
- var projectModel = new TranslationProjectDtoEdit();
- projectModel.Date = new DateTime(2021, 10, 01);
- projectModel.Term = new DateTime(2021, 10, 11);
- projectModel.ProjectName = &quot;New project&quot;;
- projectModel.description = &quot;Some test project&quot;;
- projectModel.sourceLanguageId = Guid.Parse(&quot;40cb29da-500a-4875-9e12-990ae5e24c14&quot;);
- projectModel.customerId = Guid.Parse(&quot;7bab4343-70c2-46ec-972f-3ddd94132271&quot;);
- projectModel.poNumber = &quot;PO-123-3344&quot;;
- projectModel.instructions = &quot;Some instructions&quot;;
- projectModel.TargetLanguages = new List&lt;Guid&gt;();
- projectModel.TargetLanguages.Add(Guid.Parse(&quot;312e2dd1-9b52-41b3-bc5e-154d4054fb85&quot;));
- projectModel.TargetLanguages.Add(Guid.Parse(&quot;d86487b1-2eaa-4e5f-8371-684a128e84a8&quot;));
- projectModel.TargetLanguages.Add(Guid.Parse(&quot;cd87fc65-6816-4bf6-8cf8-6610525d0560&quot;));
+	var projectModel = new TranslationProjectDtoEdit();
+	projectModel.Date = new DateTime(2021, 10, 01);
+	projectModel.Term = new DateTime(2021, 10, 11);
+	projectModel.ProjectName = &quot;New project&quot;;
+	projectModel.description = &quot;Some test project&quot;;
+	projectModel.sourceLanguageId = Guid.Parse(&quot;40cb29da-500a-4875-9e12-990ae5e24c14&quot;);
+	projectModel.customerId = Guid.Parse(&quot;7bab4343-70c2-46ec-972f-3ddd94132271&quot;);
+	projectModel.poNumber = &quot;PO-123-3344&quot;;
+	projectModel.instructions = &quot;Some instructions&quot;;
+	projectModel.TargetLanguages = new List&lt;Guid&gt;();
+	projectModel.TargetLanguages.Add(Guid.Parse(&quot;312e2dd1-9b52-41b3-bc5e-154d4054fb85&quot;));
+	projectModel.TargetLanguages.Add(Guid.Parse(&quot;d86487b1-2eaa-4e5f-8371-684a128e84a8&quot;));
+	projectModel.TargetLanguages.Add(Guid.Parse(&quot;cd87fc65-6816-4bf6-8cf8-6610525d0560&quot;));
 
- request.AddParameter(&quot;application/json&quot;, JsonConvert.SerializeObject(projectModel),  ParameterType.RequestBody);
- IRestResponse response = client.Execute(request);
- Console.WriteLine(response.Content);
-</code></pre><p>Guids used in the example above can be retrieved by sending corresponding GET requests to the <strong>Languages</strong> and <strong>Customers</strong> endpoints.</p>
-<p>If reponse status code is <strong>201</strong>, then you can deserialize it and retrieve ID of a created project. This ID can then be used to upload files, for example, or create jobs. </p>
+	request.AddParameter(&quot;application/json&quot;, JsonConvert.SerializeObject(projectModel),  ParameterType.RequestBody);
+	IRestResponse response = client.Execute(request);
+	Console.WriteLine(response.Content);
+</code></pre>
+<p>Guids used in the example above can be retrieved by sending corresponding GET requests to the <strong>Languages</strong> and <strong>Customers</strong> endpoints.</p>
+<p>If reponse status code is <strong>201</strong>, then you can deserialize it and retrieve ID of a created project. This ID can then be used to upload files, for example, or create jobs.</p>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -155,14 +157,14 @@ First of all, expand <strong>Translation project</strong> group and find an endp
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h4>On this page</h4>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -170,14 +172,14 @@ First of all, expand <strong>Translation project</strong> group and find an endp
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
