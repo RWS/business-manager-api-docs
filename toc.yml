@@ -1,4 +1,6 @@
+- name: Trados Business Manager
+  href: index.md
 - name: Articles
   href: articles/
-- name: Trados Business Manager APIs
+- name: API
   href: apiconcepts/
